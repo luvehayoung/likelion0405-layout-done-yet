@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		/*예기치못한 동작을 없애기 위해서*/
+		*{margin:0; padding:0;}
+		ul li, ol li{list-style:none;}
+
+		/*배경화면을 깐다, background속성은 다양하므로 찾아보기*/
+		body{
+			background-image:url("bg.jpg");
+			/*background-position:top center;*/
+			background-size:cover; /*또는 background-size:100% auto;*/
+			background-repeat:repeat-y;
+		}
+
+		/*요소들이 위치할 부분의 넓이를 1920-208*2의 어림치 1500px으로 잡는다*/
+		.wrap{
+			background-color:white;
+			width:1500px;
+			margin:auto;
+			/*마진 속성은 top, right, bottom, left순서대로 적용되는데
+			margin:auto;라고 속성값을 주면 위아래 자동, 좌우가 자동으로 가운데 정렬이 된다 -> 문서를 가운데 정렬시키는 가장 쉬운 방법*/
+		}
+
+		/*플로트를 이용하여 위치 잡기, 플로트를 하면 클리어 픽스를 꼭 해준다!(플로트하면 부모가 자식을 인식을 못해서 레이아웃이 망가지는데 클리어 픽스를 이용하면 가장 쉽게 부모가 자식을 인식하게 할수있다.
+		플로트 기법에서 주로 사용할 클리어 픽스 기법, 가상선택자를 이용해서 float를 없애준다.플로트를 쓴후 계속해서 사용가능
+		*/
+		/*header에서 margin과 플로트를 이용해서 위치 잡는법*/
+		header{}
+		.clearfix:after{display:block; content:""; clear:both;}
+		/*float: left, right, none(default)*/
+		header .logo{float:left;}
+		header .menu{float:right;}
+
+		header .menu ul{background-color:red;}
+		/*마진 이용해서 메뉴 간격 떨어뜨리기*/
+		header .menu ul li{
+			float:left;
+			margin-left:15px;
+		}
+		
+
+		/*padding을 이용해서 section부분 조정하기 margin vs padding*/
+		/*padding은 안쪽으로 들어가는 값, margin은 외부로 향하는 값*/
+		section{
+			background-color:blue;
+			padding-left:140px;
+			padding-right:140px;
+		}
+
+		
+
+		/*float를 이용해서 view-wrap조정 , clearfix*/
+		section .view-wrap .view-greeting{float:left; width:500px;}
+		section .view-wrap .view-intro{float:right; width:300px;}
+
+
+		/*footer에 플로트 주고 위치 잡아보기..*/
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		
+
+		<header class="clearfix">
+			<div class="logo">로고<!--img태그 이용--></div>
+			<div class="menu">
+				<ul class="clearfix">
+					<li>HOME</li>
+					<li>PROFILE</li>
+					<li>WORKS</li>
+					<li>BOARD</li>
+					<li>CONTACT</li>
+				</ul>
+			</div>
+		</header>
+
+		
+		<section>
+			<div class="view-wrap clearfix">
+				<div class="view-greeting">HACK YOUR LIFE</div>
+				<div class="view-intro">Even though many things are getting into our lives, we are still grawlling. We are LION,LiKE LION.</div>
+			</div>
+
+			<ul>
+				<li>Over a hump again in our lives</li>
+				<li>LIKELION</li>
+				<li>more story <span><!--img tag--></span></li>
+			</ul>
+		</section>
+
+		<footer>
+			<p>&copy;All rights reserved 'LIKELION'</p>
+			<div class="link-imoticon">
+				<ul>
+					<li>페이스북</li>
+					<li>인스타그램</li>
+					<li>트위터</li>
+				</ul>
+			</div>	
+		</footer>
+
+	</div>
+
+
+</body>
+</html>
